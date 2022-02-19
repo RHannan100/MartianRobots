@@ -1,7 +1,21 @@
 import pytest
+from mars import Mars
 
-def test_maximum_grid_is_50x50():
-    assert False
+def test_mars_x_axis_cannot_exceed_50():
+    with pytest.raises(ValueError):
+        Mars(51,10)
+
+def test_mars_y_axis_cannot_exceed_50():
+    with pytest.raises(ValueError):
+        Mars(10,51)
+
+def test_mars_x_axis_cannot_be_negative():
+    with pytest.raises(ValueError):
+        Mars(-10,10)
+
+def test_mars_y_axis_cannot_be_negative():
+    with pytest.raises(ValueError):
+        Mars(10,-10)
 
 def test_maximum_instruction_string_is_less_than_100():
     assert False
