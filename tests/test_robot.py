@@ -1,6 +1,5 @@
-import pytest
-
 from robot import Robot
+
 
 def test_instruction_limits():
     robot = Robot()
