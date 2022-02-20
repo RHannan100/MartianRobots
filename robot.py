@@ -19,6 +19,14 @@ class Robot:
     position_y = 0
     lost = False
 
+    def __output_pretty_location(self):
+        print("{x} {y} {o}".format(x = self.position_x, y = self.position_y, o = self.orientation.name))
+        
+    def __init__(self, x, y, orientation):
+        self.position_x = x
+        self.position_y = y
+        self.set_orientation(orientation)
+
     def set_orientation(self, orientation):
         self.orientation = Orientation[orientation]
 
@@ -58,7 +66,9 @@ class Robot:
     def move(self, instruction):
         if instruction == "F":
             self.forward(1)
+            self.__output_pretty_location()
         elif instruction in ["L", "R"]:
             self.rotate(instruction)
+            self.__output_pretty_location()
         else:
             return -1
