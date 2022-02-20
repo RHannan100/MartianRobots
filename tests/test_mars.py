@@ -44,5 +44,9 @@ def test_maximum_instruction_string_is_less_than_100():
         mars.run_robot(mars.robots[-1], "L"*100)
 
 
-def test_LOST_and_final_location_output_after_moving_oob():
-    assert False
+def test_LOST_and_final_location_output_after_moving_oob(capfd):
+    mars = Mars(10, 10)
+    mars.add_robot(1,1,"N")
+    mars.run_robot(mars.robots[-1], "F"*10)
+    out, err = capfd.readouterr()
+    assert(out.strip() == "1 10 N LOST")
