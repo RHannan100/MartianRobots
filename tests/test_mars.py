@@ -21,7 +21,16 @@ def test_maximum_instruction_string_is_less_than_100():
     assert False
 
 def test_robot_created_at_input_gridpoint():
-    assert False
+    mars = Mars(10, 10)
+    mars.add_robot(1,1,"N")
+    assert(1 == mars.robots[0].position_x)
+    assert(1 == mars.robots[0].position_y)
+    assert("N" == mars.robots[0].get_orientation())
+
+def test_cannot_create_robot_outside_grid():
+    mars = Mars(10, 10)
+    with pytest.raises(ValueError):
+        mars.add_robot(10,11,"N")
 
 def test_robot_created_for_each_instruction_pair():
     assert False
