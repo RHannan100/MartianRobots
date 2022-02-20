@@ -17,9 +17,6 @@ def test_mars_y_axis_cannot_be_negative():
     with pytest.raises(ValueError):
         Mars(10,-10)
 
-def test_maximum_instruction_string_is_less_than_100():
-    assert False
-
 def test_robot_created_at_input_gridpoint():
     mars = Mars(10, 10)
     mars.add_robot(1,1,"N")
@@ -32,15 +29,19 @@ def test_cannot_create_robot_outside_grid():
     with pytest.raises(ValueError):
         mars.add_robot(10,11,"N")
 
-def test_robot_created_for_each_instruction_pair():
-    assert False
-
 def test_robot_location_output_after_moving(capfd):
     mars = Mars(10, 10)
     mars.add_robot(1,1,"N")
     mars.run_robot(mars.robots[-1], "F")
     out, err = capfd.readouterr()
     assert(out.strip() == "1 2 N")
+
+def test_maximum_instruction_string_is_less_than_100():
+    mars = Mars(10, 10)
+    mars.add_robot(1,1,"N")
+    mars.run_robot(mars.robots[-1], "L"*99)
+    with pytest.raises(ValueError):
+        mars.run_robot(mars.robots[-1], "L"*100)
 
 
 def test_LOST_and_final_location_output_after_moving_oob():
