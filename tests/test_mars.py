@@ -35,8 +35,13 @@ def test_cannot_create_robot_outside_grid():
 def test_robot_created_for_each_instruction_pair():
     assert False
 
-def test_robot_location_output_after_moving():
-    assert False
+def test_robot_location_output_after_moving(capfd):
+    mars = Mars(10, 10)
+    mars.add_robot(1,1,"N")
+    mars.run_robot(mars.robots[-1], "F")
+    out, err = capfd.readouterr()
+    assert(out.strip() == "1 2 N")
+
 
 def test_LOST_and_final_location_output_after_moving_oob():
     assert False
