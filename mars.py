@@ -29,5 +29,6 @@ class Mars:
         if len(robot_instructions) < 100:
             for instruction in robot_instructions:
                 robot.move(instruction)
+            robot.output_pretty_location()
         else:
             raise ValueError
