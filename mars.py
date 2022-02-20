@@ -20,5 +20,8 @@ class Mars:
             raise ValueError
 
     def add_robot(self, x, y, orientation):
+        if x <= self.max_x and y <= self.max_y:
         self.robots.append(Robot(x, y, orientation))
+        else:
+            raise ValueError
 
