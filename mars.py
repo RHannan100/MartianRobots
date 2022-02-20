@@ -26,5 +26,8 @@ class Mars:
             raise ValueError
 
     def run_robot(self, robot, robot_instructions):
-        for instruction in robot_instructions:
-            robot.move(instruction)
+        if len(robot_instructions) < 100:
+            for instruction in robot_instructions:
+                robot.move(instruction)
+        else:
+            raise ValueError
