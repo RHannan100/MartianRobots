@@ -28,13 +28,9 @@ class Mars:
     def run_robot(self, robot, robot_instructions):
         if len(robot_instructions) < 100:
             for instruction in robot_instructions:
-                old_x = robot.position_x
-                old_y = robot.position_y
                 robot.move(instruction)
                 if robot.position_x > self.max_x or robot.position_y > self.max_y:
                     robot.lost = True
-                    robot.position_x = old_x
-                    robot.position_y = old_y
 
             robot.output_pretty_location()
         else:
